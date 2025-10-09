@@ -1,10 +1,13 @@
 import sys
 def comprobarargs():
     if len(sys.argv) == 1:
-        print("Faltan los dos operandos. Uso: calculadorabinario.py <operador1> <operador2>")
+        print("Faltan los dos operandos y la operación. Uso: calculadorabinario.py <operador1> <operador2> <operacion>")
         sys.exit()
     elif len(sys.argv) == 2:
-        print("Falta uno de los operandos. Uso: calculadorabinario.py <operador1> <operador2>")
+        print("Falta uno de los operandos y la operación. Uso: calculadorabinario.py <operador1> <operador2> <operacion>")
+        sys.exit()
+    elif len(sys.argv) == 3:
+        print("Falta la operación. Uso: calculadorabinario.py <operador1> <operador2> <operacion>")
         sys.exit()
 def pedirnumero(mensaje):
         return input(mensaje)
@@ -46,7 +49,7 @@ def operacion(bin1,bin2):
 
     while operacion_valida is False:
 
-        op = input("Elige si quieres sumar o restar:\n")
+        op = sys.argv[3]
 
         if op.lower() == ("+" or "suma" or "sumar"):
         
@@ -107,7 +110,7 @@ def resta(binario1, binario2) -> None:
 
             resultado.append("0")
 
-        elif binario1[1] == "0" and binario2[i] == "1" and acarreo[i+1] == "0" or (binario1[i] == "0" and binario2[i] == "0" and acarreo[i+1] == "-1" )  or (binario1 == "1" and binario2[i] == "1" and acarreo[i+1] == "-1"):
+        elif binario1[i] == "0" and binario2[i] == "1" and acarreo[i+1] == "0" or (binario1[i] == "0" and binario2[i] == "0" and acarreo[i+1] == "-1" )  or (binario1 == "1" and binario2[i] == "1" and acarreo[i+1] == "-1"):
 
             resultado.append("1")
             acarreo[i] = "-1"
