@@ -63,37 +63,32 @@ def operacion(bin1,bin2):
 
 def suma(binario1, binario2) -> None:
     resultado = []
-    acarreo = ["0", "0", "0", "0", "0", "0","0","0","0"]
+    acarreo = [0, 0, 0, 0, 0, 0, 0, 0, 0]
 
     for i in range (len(binario1)-1,-1,-1):
-        
-        if binario1[i] == "0" and binario2[i] == "0" and acarreo[i+1] == "0":
-            
+
+        suma = int(binario1[i]) + int(binario2[i]) + int(acarreo[i+1])
+
+        if suma == 0:
             resultado.append("0")
-            
-        elif binario1[i] == "0" and binario2[i] == "1" and acarreo[i+1] == "0" or (binario1[i] == "1" and binario2[i] == "0" and acarreo[i+1] == "0") or (binario1[i] == "0" and binario2[i] == "0" and acarreo[i+1] == "1"):
-            
+
+        elif suma == 1:
             resultado.append("1")
-            
-        elif binario1[i] == "1" and binario2[i] == "1" and acarreo[i+1] == "0" or (binario1[i] == "1" and binario2[i] == "0" and acarreo[i+1] == "1")  or (binario1[i] == "0" and binario2[i] == "1" and acarreo[i+1] == "1"):
-            
-                resultado.append("0")
-                acarreo[i] = "1"
-            
 
-         
-        elif binario1[i] == "1" and binario2[i] == "1" and acarreo[i+1] == "1":
+        elif suma == 2:
+            resultado.append("0")
+            acarreo[i] = 1
 
-            
+        elif suma == 3:
             resultado.append("1")
-            acarreo[i] = "1"
+            acarreo[i] = 1
 
+    if acarreo[0] == 1:
+        resultado.append("1")
 
     
     resultado.reverse()
 
-    if acarreo[0] == "1":
-        resultado.insert(0, "1")
 
     print("".join(binario1))
     print("+")
@@ -103,29 +98,32 @@ def suma(binario1, binario2) -> None:
 
 def resta(binario1, binario2) -> None:
     resultado = []
-    acarreo = ["0", "0", "0", "0", "0","0","0","0","0"]
+    acarreo = [0,0,0,0,0,0,0,0,0]
     for i in range (len(binario1)-1,-1,-1):
 
-        if binario1[i] == "0" and binario2[i] == "0" and acarreo[i+1] == "0" or (binario1[i] == "1" and binario2[i] == "1" and acarreo[i+1] == "0") or (binario1[i] == "1" and binario2[i] == "0" and acarreo[i+1] == "-1"):
+        resta = int(binario1[i])-int(binario2[i])+(acarreo[i+1])
+        if resta == 1:
+            resultado.append("1")
 
+        elif resta == 0:
             resultado.append("0")
 
-        elif binario1[i] == "0" and binario2[i] == "1" and acarreo[i+1] == "0" or (binario1[i] == "0" and binario2[i] == "0" and acarreo[i+1] == "-1" )  or (binario1 == "1" and binario2[i] == "1" and acarreo[i+1] == "-1"):
-
+        elif resta == -1:
             resultado.append("1")
-            acarreo[i] = "-1"
-
-        elif binario1[i] == "1" and binario2[i] == "0" and acarreo[i+1] == "0":
-            resultado.append("1")
-
+            acarreo[i] = -1
+        elif resta == -2:
+            resultado.append("0")
+            acarreo[i] = -1
 
     resultado.reverse()
-
     print("".join(binario1))
     print("-")
     print("".join(binario2))
     print("--------")
     print("".join(resultado))
+    if acarreo[0] == -1:
+        print("(El resultado es negativo)")
+
 
 
 def main():
