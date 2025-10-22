@@ -1,13 +1,10 @@
 import sys
 def comprobarargs():
     if len(sys.argv) == 1:
-        print("Faltan los dos operandos y la operación. Uso: calculadorabinario.py <operador1> <operador2> <operacion>")
+        print("Faltan los dos operandos y la operación. Uso: calculadorabinario.py <operador1> <operador2> [operacion]")
         sys.exit()
     elif len(sys.argv) == 2:
-        print("Falta uno de los operandos y la operación. Uso: calculadorabinario.py <operador1> <operador2> <operacion>")
-        sys.exit()
-    elif len(sys.argv) == 3:
-        print("Falta la operación. Uso: calculadorabinario.py <operador1> <operador2> <operacion>")
+        print("Falta uno de los operandos y la operación. Uso: calculadorabinario.py <operador1> <operador2> [operacion]")
         sys.exit()
 def pedirnumero(mensaje):
         return input(mensaje)
@@ -48,10 +45,11 @@ def operacion(bin1,bin2):
     operacion_valida = False
 
     while operacion_valida is False:
+        op = ""
+        if len(sys.argv) == 5:
+            op = sys.argv[3]
 
-        op = sys.argv[3]
-
-        if op.lower() == ("+" or "suma" or "sumar"):
+        elif op.lower() == ("+" or "suma" or "sumar"):
         
             operacion_valida = True
             suma(bin1, bin2)
@@ -60,6 +58,10 @@ def operacion(bin1,bin2):
          
                 operacion_valida = True
                 resta(bin1,bin2)
+        if op == "":
+            operacion_valida = True
+            suma(bin1, bin2)
+            resta(bin1,bin2)
 
 def suma(binario1, binario2) -> None:
     resultado = []
@@ -95,6 +97,7 @@ def suma(binario1, binario2) -> None:
     print("".join(binario2))
     print("---------")
     print("".join(resultado))
+    print("\n")
 
 def resta(binario1, binario2) -> None:
     resultado = []
@@ -122,7 +125,7 @@ def resta(binario1, binario2) -> None:
     print("--------")
     print("".join(resultado))
     if acarreo[0] == -1:
-        print("(El resultado es negativo)")
+        print("(El resultado es negativo, genera desbordamiento)")
 
 
 
@@ -141,8 +144,7 @@ def main():
     lista_bin2 = list(bin2)
 
     operacion(lista_bin1,lista_bin2)
-        
-        
+
         
 if __name__== "__main__":
     main()
