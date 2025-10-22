@@ -1,10 +1,10 @@
 import sys
 def comprobarargs():
     if len(sys.argv) == 1:
-        print("Faltan los dos operandos y la operación. Uso: calculadorabinario.py <operador1> <operador2> [operacion]")
+        print("Faltan los dos operandos. Uso: calculadorabinario.py <operador1> <operador2> [operacion]")
         sys.exit()
     elif len(sys.argv) == 2:
-        print("Falta uno de los operandos y la operación. Uso: calculadorabinario.py <operador1> <operador2> [operacion]")
+        print("Falta uno de los operandos. Uso: calculadorabinario.py <operador1> <operador2> [operacion]")
         sys.exit()
 def pedirnumero(mensaje):
         return input(mensaje)
@@ -41,27 +41,23 @@ def comprobarbinarios(binario1, binario2) -> list:
     return [binario1, binario2]
 
 def operacion(bin1,bin2):
-
-    operacion_valida = False
-
-    while operacion_valida is False:
-        op = ""
-        if len(sys.argv) == 5:
+    if len(sys.argv) < 4:
+        suma(bin1, bin2)
+        resta(bin1, bin2)
+    else:
+        operacion_valida = False
+        while operacion_valida is False:
             op = sys.argv[3]
 
-        elif op.lower() == ("+" or "suma" or "sumar"):
-        
-            operacion_valida = True
-            suma(bin1, bin2)
-        
-        elif op.lower() == ("-" or "resta" or "restar"):
-         
+            if op.lower() == ("+" or "suma" or "sumar"):
+
+                operacion_valida = True
+                suma(bin1, bin2)
+
+            elif op.lower() == ("-" or "resta" or "restar"):
                 operacion_valida = True
                 resta(bin1,bin2)
-        if op == "":
-            operacion_valida = True
-            suma(bin1, bin2)
-            resta(bin1,bin2)
+
 
 def suma(binario1, binario2) -> None:
     resultado = []
@@ -133,8 +129,7 @@ def main():
     comprobarargs()
     bin1 = sys.argv[1]
     bin2 = sys.argv[2]
-    # bin1 = pedirnumero("Introduce el 1º número (debe ser binario y de 8 dígitos):\n")
-    # bin2 = pedirnumero("Introduce el 2º número (debe ser binario y de 8 dígitos):\n")
+
     
     binarios_check = comprobarbinarios(bin1, bin2)
     bin1 = binarios_check[0]
