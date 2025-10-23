@@ -1,15 +1,15 @@
 import sys
 def comprobarargs():
+    """Función que comprueba si falta/n algun/os argumento/s"""
     if len(sys.argv) == 1:
         print("Faltan los dos operandos. Uso: calculadorabinario.py <operador1> <operador2> [operacion]")
         sys.exit()
     elif len(sys.argv) == 2:
         print("Falta uno de los operandos. Uso: calculadorabinario.py <operador1> <operador2> [operacion]")
         sys.exit()
-def pedirnumero(mensaje):
-        return input(mensaje)
 
 def comprobarceroyuno(binario):
+    """Función que comprueba si todos los digitos de los binarios son 0 o 1"""
     contador = 0
     for digito in binario:
 
@@ -25,41 +25,46 @@ def comprobarceroyuno(binario):
 
         
 def comprobarbinarios(binario1, binario2) -> list:
+    """Función que termina de validar el formato de los binarios e informa al usuario si encuentra algún error"""
 
-    while binario1.isdigit() == False or len(binario1) != 8 or comprobarceroyuno(binario1) == False or binario2.isdigit() == False or len(binario2) != 8 or comprobarceroyuno(binario2) == False:
+    if (binario2.isdigit() == False or len(binario2) != 8 or comprobarceroyuno(binario2)) == False and (binario1.isdigit() == False or len(binario1) != 8 or comprobarceroyuno(binario1) == False):
 
-        if binario1.isdigit() == False or len(binario1) != 8 or comprobarceroyuno(binario1) == False:
-            
-            binario1 = pedirnumero("El formato del primer número es incorrecto. Por favor, vuelve a introducirlo. (Debe ser binario y de 8 dígitos):\n")
+        print("El formato de ambos números es incorrecto. Por favor, vuelve a introducirlos.(Deben ser binario y de 8 dígitos):\n")
+        sys.exit()
 
-            
-        elif binario2.isdigit() == False or len(binario2) != 8 or comprobarceroyuno(binario2) == False:
-            
-            binario2 = pedirnumero("El formato del segundo número es incorrecto. Por favor, vuelve a introducirlo.(debe ser binario y de 8 dígitos):\n")
+    elif binario1.isdigit() == False or len(binario1) != 8 or comprobarceroyuno(binario1) == False:
+
+        print("El formato del primer número es incorrecto. Por favor, vuelve a introducirlo. (Debe ser binario y de 8 dígitos):\n")
+        sys.exit()
+
+    elif binario2.isdigit() == False or len(binario2) != 8 or comprobarceroyuno(binario2) == False:
+
+        print("El formato del segundo número es incorrecto. Por favor, vuelve a introducirlo. (Debe ser binario y de 8 dígitos):\n")
+        sys.exit()
 
  
     return [binario1, binario2]
 
 def operacion(bin1,bin2):
+    """Función que elige la operación"""
     if len(sys.argv) < 4:
         suma(bin1, bin2)
         resta(bin1, bin2)
     else:
-        operacion_valida = False
-        while operacion_valida is False:
             op = sys.argv[3]
 
             if op.lower() == ("+" or "suma" or "sumar"):
 
-                operacion_valida = True
                 suma(bin1, bin2)
 
             elif op.lower() == ("-" or "resta" or "restar"):
-                operacion_valida = True
-                resta(bin1,bin2)
 
+                resta(bin1,bin2)
+            else:
+                print("Introduce una operación válida, o ninguna para realizar ambas (suma y resta)")
 
 def suma(binario1, binario2) -> None:
+    """Función que hace la suma de los dos operandos"""
     resultado = []
     acarreo = [0, 0, 0, 0, 0, 0, 0, 0, 0]
 
@@ -96,6 +101,7 @@ def suma(binario1, binario2) -> None:
     print("\n")
 
 def resta(binario1, binario2) -> None:
+    """Función que hace la resta de los dos operandos"""
     resultado = []
     acarreo = [0,0,0,0,0,0,0,0,0]
     for i in range (len(binario1)-1,-1,-1):
