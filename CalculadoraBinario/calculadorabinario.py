@@ -49,19 +49,20 @@ def operacion(bin1,bin2):
     """Función que elige la operación"""
     if len(sys.argv) < 4:
         suma(bin1, bin2)
+        print("\n")
         resta(bin1, bin2)
     else:
             op = sys.argv[3]
 
-            if op.lower() == ("+" or "suma" or "sumar"):
+            if op.lower() == "+":
 
                 suma(bin1, bin2)
 
-            elif op.lower() == ("-" or "resta" or "restar"):
+            elif op.lower() == "-":
 
                 resta(bin1,bin2)
             else:
-                print("Introduce una operación válida, o ninguna para realizar ambas (suma y resta)")
+                print("Introduce una operación válida , o ninguna para realizar ambas (suma y resta, usando sus respectivos símbolos)")
 
 def suma(binario1, binario2) -> None:
     """Función que hace la suma de los dos operandos"""
@@ -98,7 +99,6 @@ def suma(binario1, binario2) -> None:
     print("".join(binario2))
     print("---------")
     print("".join(resultado))
-    print("\n")
 
 def resta(binario1, binario2) -> None:
     """Función que hace la resta de los dos operandos"""
