@@ -98,7 +98,7 @@ def suma(binario1, binario2) -> None:
     print("+")
     print("".join(binario2))
     print("---------")
-    print("".join(resultado).zfill(8))
+    print("".join(resultado))
 
 def resta(binario1, binario2) -> None:
     """Función que hace la resta de los dos operandos"""
@@ -133,8 +133,8 @@ def resta(binario1, binario2) -> None:
 
 def main():
     comprobarargs()
-    bin1 = sys.argv[1]
-    bin2 = sys.argv[2]
+    bin1 = sys.argv[1].zfill(8)
+    bin2 = sys.argv[2].zfill(8)
 
     
     binarios_check = comprobarbinarios(bin1, bin2)
