@@ -27,17 +27,17 @@ def comprobarceroyuno(binario):
 def comprobarbinarios(binario1, binario2) -> list:
     """Función que termina de validar el formato de los binarios e informa al usuario si encuentra algún error"""
 
-    if (binario2.isdigit() == False or len(binario2) != 8 or comprobarceroyuno(binario2)) == False and (binario1.isdigit() == False or len(binario1) != 8 or comprobarceroyuno(binario1) == False):
+    if (binario2.isdigit() == False or comprobarceroyuno(binario2)) == False and (binario1.isdigit() == False or comprobarceroyuno(binario1) == False):
 
         print("El formato de ambos números es incorrecto. Por favor, vuelve a introducirlos.(Deben ser binario y de 8 dígitos):\n")
         sys.exit()
 
-    elif binario1.isdigit() == False or len(binario1) != 8 or comprobarceroyuno(binario1) == False:
+    elif binario1.isdigit() == False or comprobarceroyuno(binario1) == False:
 
         print("El formato del primer número es incorrecto. Por favor, vuelve a introducirlo. (Debe ser binario y de 8 dígitos):\n")
         sys.exit()
 
-    elif binario2.isdigit() == False or len(binario2) != 8 or comprobarceroyuno(binario2) == False:
+    elif binario2.isdigit() == False or comprobarceroyuno(binario2) == False:
 
         print("El formato del segundo número es incorrecto. Por favor, vuelve a introducirlo. (Debe ser binario y de 8 dígitos):\n")
         sys.exit()
@@ -98,7 +98,7 @@ def suma(binario1, binario2) -> None:
     print("+")
     print("".join(binario2))
     print("---------")
-    print("".join(resultado))
+    print("".join(resultado).zfill(8))
 
 def resta(binario1, binario2) -> None:
     """Función que hace la resta de los dos operandos"""
@@ -125,7 +125,7 @@ def resta(binario1, binario2) -> None:
     print("-")
     print("".join(binario2))
     print("--------")
-    print("".join(resultado))
+    print("".join(resultado).zfill(8))
     if acarreo[0] == -1:
         print("(El resultado es negativo, genera desbordamiento)")
 
