@@ -1,4 +1,4 @@
-> CLI que **suma** y **resta** números binarios de **8 bits**.
+> CLI que **suma** y **resta** números binarios de **1-8 bits**.
 
 > **Salida exclusivamente en binario de 8 bits**
 
@@ -9,9 +9,9 @@
 
   
 
-Este proyecto implementa una **calculadora binaria de 8 bits** que opera con **enteros sin signo**.
+Este proyecto implementa una **calculadora binaria de 1-8 bits** que opera con **enteros sin signo**.
 
-- Los **operandos** se introducen como **cadenas binarias** de **8 bits** (`0`/`1`).
+- Los **operandos** se introducen como **cadenas binarias** de **1-8 bits** (`0`/`1`).
 
 - La **operación** se define por **signo**: `+` (suma) o `-` (resta).
 
