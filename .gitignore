@@ -1,0 +1,37 @@
+# Entorno virtual
+venv/
+.env/
+.env.bak/
+.venv/
+
+# Archivos de Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pycache__/
+*.egg
+*.egg-info/
+build/
+dist/
+*.xml
+
+# Archivos de configuración o sistema
+.DS_Store
+Thumbs.db
+
+# Archivos temporales o logs
+*.log
+*.tmp
+*.bak
+
+# Archivos de IDEs
+.vscode/
+.idea/
+*.swp
+
+# Datos generados
+output/
+*.pdf
+*.txt
+*.csv
